@@ -9,7 +9,8 @@ use App\Model\Reminder;
 class ReminderController extends Controller
 {
     public function home(){
-        return view('home');
+        $reminders = Reminder::orderBy('id','desc')->get();
+        return view('home',['reminders' => $reminders]);
     }
 
     public function addReminder(Request $request){
